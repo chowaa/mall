@@ -30,6 +30,7 @@ export default {
     },
     removeItem(productId) {
       this.$store.commit('removeFromCart', productId);
+      this.getProductById()
     },
     getProductById() {
       this.cartItems = []
