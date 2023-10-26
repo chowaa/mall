@@ -11,6 +11,7 @@ export default new Vuex.Store({
       phone: '123-456-7890',
       address: '123 Main St, City'
     },
+    isLogin: false
   },
   mutations: {
     // 添加商品到购物车
@@ -35,5 +36,9 @@ export default new Vuex.Store({
     updateUser(state, newUser) {
       state.user = newUser;
     },
+    // 修改登陆状态
+    loginAndLogOut(state, type) {
+      state.isLogin = type
+    }
   }
 });

@@ -1,7 +1,7 @@
 <template>
   <div class="shopping-cart">
-    <el-card v-for="item in cartItems" :key="item.id" class="cart-item">
-      <div class="cart-item-body">
+    <el-card v-for="item in cartItems" :key="item.id" class="cart-item" v-if="item.quantity">
+      <div class="cart-item-body" >
         <div class="cart-item-img">
           <el-image class="phone-img" :src="item.imgUrl"></el-image>
         </div>

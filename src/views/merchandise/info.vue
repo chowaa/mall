@@ -1,15 +1,23 @@
 <template>
   <div class="product-detail">
-    <h2>商品详情</h2>
-    <div v-if="product">
-      <h3>{{ product.name }}</h3>
-      <p>品牌: {{ product.brand }}</p>
-      <p>价格: ${{ product.price }}</p>
-      <p>描述: {{ product.description }}</p>
-    </div>
-    <div v-else>
-      <p>商品未找到</p>
-    </div>
+    <el-card>
+      <h2 slot="header">商品详情</h2>
+      <div class="cart-item" v-if="product">
+        <div class="cart-item-img">
+          <el-image class="phone-img" :src="product.imgUrl"></el-image>
+        </div>
+        <div class="cart-item-content">
+          <h1>{{ product.name }}</h1>
+          <p>{{ product.brand }}</p>
+          <p>${{ product.price }}</p>
+          <p>{{ product.description }}</p>
+          <p>{{ product.disposition }}</p>
+        </div>
+      </div>
+      <div v-else>
+        <p>商品未找到</p>
+      </div>
+    </el-card>
   </div>
 </template>
 
@@ -23,22 +31,30 @@ export default {
     };
   },
   created() {
-    // 从路由参数中获取商品ID
     const productId = this.$route.params.id;
-
-    // 根据商品ID从数据中查找商品信息
     this.product = productsData.find(product => product.id === parseInt(productId));
-
-    if (!this.product) {
-      // 处理商品未找到的情况，可以重定向到其他页面或显示错误消息
-    }
   }
 };
 </script>
 
 <style scoped>
 .product-detail {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
+  .cart-item {
+    display: flex;
+    justify-content: space-around;
+  }
+  .cart-item-img {
+    .phone-img {
+      height: 500px;
+      border-radius: 20px;
+    }
+  }
+  .cart-item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }
 </style>

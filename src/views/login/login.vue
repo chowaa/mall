@@ -10,16 +10,12 @@
       <el-form-item>
         <el-button type="primary" @click="login">登录</el-button>
       </el-form-item>
-      <el-form-item>
-        <router-link to="/register">没有账户？立即注册</router-link>
-      </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login',
   data() {
     return {
       loginForm: {
@@ -62,8 +58,9 @@ export default {
           if (matchingAccount) {
             // 登录成功
             this.$message.success('登录成功')
-            this.$router.push({
-              name: 'about'
+            this.$store.commit('loginAndLogOut', true)
+            this.$router.replace({
+              name: 'Products'
             })
           } else {
             // 登录失败

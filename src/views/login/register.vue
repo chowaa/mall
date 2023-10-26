@@ -13,9 +13,6 @@
       <el-form-item>
         <el-button type="primary" @click="register">注册</el-button>
       </el-form-item>
-      <el-form-item>
-        <router-link to="/login">已有账户？立即登录</router-link>
-      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -88,7 +85,7 @@ export default {
             localStorage.setItem('accounts', JSON.stringify(existingAccounts));
 
             this.$router.push({
-              name: 'about'
+              name: 'login'
             });
           }
 
@@ -106,7 +103,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  //height: 100vh;
 }
 
 .el-form {

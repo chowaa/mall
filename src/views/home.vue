@@ -1,14 +1,21 @@
 <template>
-  <div class="about">
-    <div class="navbar">
-      <router-link to="/products">商品列表</router-link>
-      <router-link to="/cart">购物车</router-link>
-      <router-link to="/profile">个人信息</router-link>
-    </div>
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div>
+    <nav class="nav">
+      <el-row :gutter="10">
+        <el-col :span="8">
+          <router-link to="/products">商品列表</router-link>
+        </el-col>
+        <el-col :span="8">
+          <router-link to="/cart">购物车</router-link>
+        </el-col>
+        <el-col :span="8">
+          <router-link to="/profile">个人信息</router-link>
+        </el-col>
+      </el-row>
     </nav>
+    <div class="content">
+      <router-view/>
+    </div>
   </div>
 </template>
 
