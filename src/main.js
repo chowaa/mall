@@ -9,6 +9,18 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI);
 
+let existingAccounts = JSON.parse(localStorage.getItem('accounts')) || [];
+if (!existingAccounts.some(item => item.username === 'admin')) {
+  existingAccounts.push(
+    {
+      username: 'admin',
+      password: '123123Zz'
+    }
+  )
+
+  localStorage.setItem('accounts', JSON.stringify(existingAccounts));
+}
+
 new Vue({
   router,
   render: h => h(App),

@@ -83,7 +83,11 @@ export default {
 
             // 将更新后的账号信息重新保存到 localStorage
             localStorage.setItem('accounts', JSON.stringify(existingAccounts));
-
+            this.$message.success('注册成功！')
+            this.username = ''
+            this.password = ''
+            this.confirmPassword = ''
+            this.$parent.type = true
             // this.$router.push({
             //   name: 'login'
             // });
