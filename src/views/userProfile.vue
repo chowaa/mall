@@ -30,6 +30,7 @@ export default {
   },
   methods: {
     saveChanges() {
+      // element-ui中表单验证方法
       this.$refs.userProfileForm.validate(valid => {
         if (valid) {
           this.$store.commit('updateUser', this.user);

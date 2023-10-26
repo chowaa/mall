@@ -31,8 +31,10 @@ export default {
     };
   },
   created() {
+    // 接收路由传递来的参数id
     const productId = this.$route.params.id;
-    this.product = productsData.find(product => product.id === parseInt(productId));
+    // 使用find方法通过id在productsData中找到对应id的数据
+    this.product = productsData.find(product => product.id === productId);
   }
 };
 </script>

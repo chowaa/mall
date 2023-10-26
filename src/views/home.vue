@@ -20,20 +20,9 @@
 </template>
 
 <script>
-import list from '@/views/merchandise/list.vue'
 export default {
-  components: {
-    list
-  },
   data() {
-    return {
-      activeName: 'second'
-    };
-  },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    }
+    return {}
   }
 }
 </script>

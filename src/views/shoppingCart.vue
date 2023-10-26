@@ -25,27 +25,27 @@ import phonesList from '@/assets/phones.json'
 export default {
   data() {
     return {
-      cartItems: []
+      cartItems: [] // 购物车商品列表
     }
   },
   created() {
-    this.getProductById()
+    this.getProductById() // 在组件创建时获取商品信息
   },
   methods: {
     addToCart(productId, quantity) {
-      this.$store.commit('addToCart', { productId, quantity })
-      this.getProductById()
+      this.$store.commit('addToCart', { productId, quantity }) // 将商品添加到购物车
+      this.getProductById() // 更新购物车商品列表
     },
     removeItem(productId) {
-      this.$store.commit('removeFromCart', productId);
-      this.getProductById()
+      this.$store.commit('removeFromCart', productId); // 从购物车中移除商品
+      this.getProductById() // 更新购物车商品列表
     },
     getProductById() {
-      this.cartItems = []
-      const cartIds = this.$store.state.cartItems
+      this.cartItems = [] // 清空购物车商品列表
+      const cartIds = this.$store.state.cartItems // 获取购物车商品ID列表
       for (let cart of cartIds) {
-        const item = phonesList.find(product => product.id === cart.productId)
-        this.cartItems.push({...item, quantity: cart.quantity})
+        const item = phonesList.find(product => product.id === cart.productId) // 根据商品ID查找商品信息
+        this.cartItems.push({...item, quantity: cart.quantity}) // 将商品信息添加到购物车商品列表
       }
     }
   }
