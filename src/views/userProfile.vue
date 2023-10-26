@@ -1,7 +1,13 @@
 <template>
   <div class="user-profile">
     <h2>个人信息</h2>
-    <el-form :model="user" ref="userProfileForm" label-position="top">
+    <el-card v-if="edit">
+      <p>姓名: {{ user.name }}</p>
+      <p>电话: {{ user.phone }}</p>
+      <p>地址: {{ user.address }}</p>
+      <el-button @click="edit = !edit">修改</el-button>
+    </el-card>
+    <el-form v-else :model="user" ref="userProfileForm" label-position="top">
       <el-form-item label="姓名">
         <el-input v-model="user.name"></el-input>
       </el-form-item>
@@ -22,7 +28,8 @@
 export default {
   data() {
     return {
-      user: {}
+      user: {},
+      edit: true
     };
   },
   created() {
@@ -35,6 +42,7 @@ export default {
         if (valid) {
           this.$store.commit('updateUser', this.user);
           this.$message.success('更改已保存')
+          this.edit = !this.edit
         } else {
           this.$message.error('请填写完整的信息');
         }
