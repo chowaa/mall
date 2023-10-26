@@ -2,10 +2,10 @@
   <div class="user-profile">
     <h2>个人信息</h2>
     <el-card v-if="edit">
-      <p>姓名: {{ user.name }}</p>
-      <p>电话: {{ user.phone }}</p>
-      <p>地址: {{ user.address }}</p>
-      <el-button @click="edit = !edit">修改</el-button>
+      <p style="margin: 10px 0">姓名: {{ user.name }}</p>
+      <p style="margin: 10px 0">电话: {{ user.phone }}</p>
+      <p style="margin: 10px 0">地址: {{ user.address }}</p>
+      <el-button @click="edit = false">修改</el-button>
     </el-card>
     <el-form v-else :model="user" ref="userProfileForm" label-position="top">
       <el-form-item label="姓名">
@@ -42,7 +42,8 @@ export default {
         if (valid) {
           this.$store.commit('updateUser', this.user);
           this.$message.success('更改已保存')
-          this.edit = !this.edit
+          this.user = {...this.$store.state.user}
+          this.edit = true
         } else {
           this.$message.error('请填写完整的信息');
         }
