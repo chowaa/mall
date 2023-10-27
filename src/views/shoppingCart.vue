@@ -17,6 +17,10 @@
         </div>
       </div>
     </el-card>
+    <div class="item-price" v-if="priceTotal">
+      <span>总价格：{{ priceTotal }}</span>
+      <el-button type="primary" @click="order">立即下单</el-button>
+    </div>
   </div>
 </template>
 
@@ -25,7 +29,8 @@ import phonesList from '@/assets/phones.json'
 export default {
   data() {
     return {
-      cartItems: [] // 购物车商品列表
+      cartItems: [], // 购物车商品列表
+      priceTotal: 0
     }
   },
   created() {
@@ -47,6 +52,20 @@ export default {
         const item = phonesList.find(product => product.id === cart.productId) // 根据商品ID查找商品信息
         this.cartItems.push({...item, quantity: cart.quantity}) // 将商品信息添加到购物车商品列表
       }
+      this.computedPriceT()
+    },
+    computedPriceT() {
+      this.priceTotal = 0
+      this.cartItems.map(item => {
+        this.priceTotal += item.price * item.quantity
+      })
+    },
+    order() {
+      this.cartItems.map(item=> {
+        this.removeItem(item.id) // 从购物车中移除商品
+      })
+      this.priceTotal = 0
+      this.$message.success("下单成功！")
     }
   }
 };
@@ -57,36 +76,40 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.cart-item {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 2px 4px 12px rgba(0,0,0,.08);
-  margin: 10px;
-  .cart-item-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    .cart-item-img {
-      width: 400px;
-      .phone-img {
-        height: 150px;
-        border-radius: 20px;
+  .cart-item {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+    margin: 10px;
+    .cart-item-body {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .cart-item-img {
+        width: 400px;
+        .phone-img {
+          height: 150px;
+          border-radius: 20px;
+        }
+      }
+      .cart-item-content {
+        padding: 20px;
+        text-align: center;
+      }
+      .cart-item-btn {
+        width: 400px;
       }
     }
-    .cart-item-content {
-
-    }
-    .cart-item-btn {
-      width: 400px;
-    }
   }
-}
-
-.cart-item-content {
-  padding: 20px;
-  text-align: center;
+  .item-price {
+    width: 100%;
+    padding: 20px 105px;
+    text-align: end;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 </style>

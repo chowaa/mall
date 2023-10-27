@@ -1,18 +1,18 @@
 <template>
   <div class="phone-list">
-    <el-input size="small" v-model="searchQuery" placeholder="按名称或品牌搜索"></el-input>
+    <el-input class="input-search" size="medium" v-model="searchQuery" placeholder="按名称或品牌搜索" suffix-icon="el-icon-search"></el-input>
     <el-row :gutter="40">
       <el-col v-for="phone in filteredProducts" :key="phone.id" :span="6">
         <el-card>
-          <div class="phone">
-            <el-image class="phone-img" @click="toDetailsPage(phone.id)" :src="phone.imgUrl" fit="fill"></el-image>
+          <div class="phone"  @click="toDetailsPage(phone.id)">
+            <el-image class="phone-img" :src="phone.imgUrl" fit="fill"></el-image>
             <div class="body">
               <h2>{{ phone.name }}</h2>
               <p>{{ phone.brand }}</p>
               <p>价格: ${{ phone.price }}</p>
-              <el-button class="phone-btn" type="primary" @click="addToCart(phone.id, 1)">加入购物车</el-button>
             </div>
           </div>
+          <el-button class="phone-btn" type="primary" @click="addToCart(phone.id, 1)">加入购物车</el-button>
         </el-card>
       </el-col>
     </el-row>
@@ -66,32 +66,39 @@ export default {
 }
 
 .phone {
-  height: 520px;
+  height: 450px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  & :hover {
+    cursor: pointer;
+  }
   .phone-img {
     border-radius: 20px;
     width: 300px;
     max-height: 400px;
-    & :hover {
-      cursor: pointer;
-    }
+  }
+  .body {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
   }
 }
+
 .el-card {
   margin: 20px 0;
   border-radius: 20px;
   box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+  text-align: center;
   background-color: #ffffff;
 }
 .el-row {
   margin: 10px 0;
 }
 
-.el-card {
-  text-align: left;
-}
 </style>

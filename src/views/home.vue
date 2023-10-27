@@ -12,7 +12,7 @@
             <router-link to="/profile">个人信息</router-link>
           </el-col>
           <el-col :span="6">
-            <router-link to="/loginRegister">登录/注册</router-link>
+            <router-link to="/loginRegister">退出登录</router-link>
           </el-col>
         </el-row>
       </nav>

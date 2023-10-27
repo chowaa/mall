@@ -79,5 +79,32 @@
     "description": "精心设计,处处带来改变。",
     "imgUrl": "https://img11.360buyimg.com/n1/s450x450_jfs/t1/150701/19/31904/21527/650d0e18Fc78139e0/dbd932fc7edc309f.jpg.avif",
     "disposition": "Apple iPhone 15 (A3092) 128GB 黑色 支持移动联通电信5G 双卡双待手机"
+  },
+  {
+    "id": 10,
+    "name": "Xiaomi 14",
+    "brand": "Xiaomi",
+    "price": 399,
+    "description": "Xiaomi14全面跨越式升级",
+    "imgUrl": "https://img10.360buyimg.com/n1/s450x450_jfs/t1/104172/10/25484/18343/653a5a98F62900de6/c2e5967acfb981fa.jpg.avif",
+    "disposition": "小米14 新品5G手机 Xiaomi 14 小米澎湃OS 骁龙8Gen3 徕卡光学镜头 黑色 8GB+256GB【官方标配】"
+  },
+  {
+    "id": 11,
+    "name": "Xiaomi 14Pro",
+    "brand": "Xiaomi",
+    "price": 399,
+    "description": "一部大成之作，为你万象出新。",
+    "imgUrl": "https://img11.360buyimg.com/n1/jfs/t1/236990/8/783/23091/653a2bf0Ffe3556aa/c2c5521e1caf9a10.jpg.avif",
+    "disposition": "小米14Pro 徕卡可变光圈镜头 光影猎人900 小米澎湃OS 骁龙8Gen3 16+512 黑色"
+  },
+  {
+    "id": 12,
+    "name": "Huawei mate60pro",
+    "brand": "Huawei",
+    "price": 399,
+    "description": "同心聚力 美学新生",
+    "imgUrl": "https://img14.360buyimg.com/n1/s450x450_jfs/t1/196652/19/37486/41315/64edd5c7F20e7e8f0/33d5670acf804bdd.png.avif",
+    "disposition": "华为mate60pro 新品手机 现货速发 白沙银 12G+1T 全网通"
   }
 ]
