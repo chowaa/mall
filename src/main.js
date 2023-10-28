@@ -7,7 +7,6 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI);
 
 let existingAccounts = JSON.parse(localStorage.getItem('accounts')) || [];
 if (!existingAccounts.some(item => item.username === 'admin')) {
@@ -20,6 +19,24 @@ if (!existingAccounts.some(item => item.username === 'admin')) {
 
   localStorage.setItem('accounts', JSON.stringify(existingAccounts));
 }
+
+const messages = ['success', 'warning', 'info', 'error'];
+messages.forEach(type => {
+  ElementUI.Message[type] = options => {
+    if(typeof options === 'string') {
+      options = {
+          message: options
+      };
+      // 默认设置
+      options.duration = 1000; // 默认值3000毫秒
+      options.showClose = true; // 默认值false
+      options.offset = 78; // 默认值20
+    }
+   options.type = type;
+   return ElementUI.Message(options);
+}
+});
+Vue.use(ElementUI);
 
 new Vue({
   router,
